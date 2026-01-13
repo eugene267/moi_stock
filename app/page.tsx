@@ -33,15 +33,6 @@ export default function Home() {
   const [selectedStockCode, setSelectedStockCode] = useState<string>("005930");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSelect = useCallback((code: string) => {
-    setSelectedStockCode(code);
-  }, []);
-
-  const currentStockName = useMemo(
-    () => stockMap[selectedStockCode],
-    [selectedStockCode]
-  );
-
   // 최초 차트 구성
   useEffect(() => {
     if (!chartContainerRef.current) return;
@@ -111,10 +102,10 @@ export default function Home() {
         code={code}
         name={name}
         isActive={selectedStockCode === code}
-        onSelect={handleSelect} // useCallback으로 handleSelect 메모이제이션
+        onSelect={() => setSelectedStockCode(code)} // useCallback으로 handleSelect 메모이제이션
       />
     ));
-  }, [selectedStockCode, handleSelect]);
+  }, [selectedStockCode]);
 
   // 로딩 중이거나 종목명이 변경될 때 타이틀 텍스트 변경
   const titleText = useMemo(() => {
@@ -123,8 +114,8 @@ export default function Home() {
         <span className={styles.loadingIndicator}>데이터 가져오는 중...</span>
       );
 
-    return `${currentStockName} (${selectedStockCode})`;
-  }, [currentStockName, selectedStockCode, isLoading]);
+    return `${stockMap[selectedStockCode]} (${selectedStockCode})`;
+  }, [selectedStockCode, isLoading]);
 
   //html 렌더링
   return (
@@ -137,7 +128,7 @@ export default function Home() {
           ${isLoading ? styles.loadingButtonGroup : ""}
         `}
       >
-        {stockButtons}
+        {stockButtons} {/* useMemo 필요한지 확인하기 */}
       </div>
 
       <div ref={chartContainerRef} className={styles.chartWrapper} />

@@ -29,8 +29,8 @@
 
 ## 3.2. DB & Server
 
-- DB : postgreSQL
-- 클라우드 : Supabase
+- 온프레미스 DB : postgreSQL
+- 클라우드 DB : Supabase
 - 서버 : next.js api routes
 
 ## 3.3. 인증 방식
@@ -67,7 +67,14 @@
 - UI/UX 개선
 - 최종 테스트 및 디버깅
 
-# 질문
+# tip
 
-usememo를 사용할 때 의존성 배열에는 보통 usememo 안에 들어가는 모든 값을 넣나요?
-a랑 b라는 변수가 있는데 b가 어차피 a에 의존적이면 a랑 b 둘 다 넣어야 하나요? 아니면 a만 넣어도 되나요?
+계산량이 많지 않은 것은 굳이 hook써서 줄 늘리지 말기
+
+컴포넌트를 할 때 : 재사용성이 높은가?
+
+origin : github에 올릴 때 (로컬 관련 명령어는 안 씀)
+
+의존성 배열은 다 넣기
+
+# 질문
