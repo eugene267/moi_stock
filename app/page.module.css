@@ -1,0 +1,71 @@
+.mainContainer {
+  padding: 20px;
+  background-color: #0b0e14;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 버튼들을 감싸는 영역 */
+.buttonGroup {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px; /* 버튼 사이 간격 */
+}
+
+.loadingButtonGroup {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(1); /* 선택사항: 흑백 처리하면 더 비활성 같아 보여요 */
+}
+
+/* 개별 버튼 스타일 */
+.stockButton {
+  padding: 8px 16px;
+  background-color: #2b2b43;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.stockButton:hover {
+  background-color: #26a69a;
+}
+
+.stockButton:disabled {
+  background-color: #1e1e24; 
+  color: #666; 
+  border-color: #333;
+  cursor: not-allowed; 
+  opacity: 0.7;
+}
+
+.activeButton {
+  background-color: #3d3d5c;
+  border-color: #26a69a;
+}
+
+.chartWrapper {
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.loadingIndicator {
+   font-size: 0.6em;
+   color: #ffa726;
+   margin-left: 10px;
+}
