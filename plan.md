@@ -78,3 +78,63 @@ origin : github에 올릴 때 (로컬 관련 명령어는 안 씀)
 의존성 배열은 다 넣기
 
 # 질문
+
+# DB 스키마
+
+## Cloud (Supabase)
+
+A. users (사용자 정보)
+id: uuid (PK, Supabase Auth 연동)
+
+email: text (Google OAuth 계정 이메일)
+
+created_at: timestamp
+
+B. accounts (계좌 요약)
+id: uuid (PK)
+
+user_id: uuid (FK -> users.id)
+
+balance: numeric (현재 주문 가능 현금)
+
+pending_balance: numeric (추가: 매수 주문 중인 미체결 금액 - 잔고 꼬임 방지용)
+
+total_evaluation: numeric (총 자산 평가액)
+
+updated_at: timestamp
+
+C. holdings (보유 종목 현황)
+id: uuid (PK)
+
+account_id: uuid (FK -> accounts.id)
+
+stock_code: text (종목코드)
+
+stock_name: text (종목명)
+
+quantity: integer (보유 수량)
+
+pending_quantity: integer (추가: 매도 주문 중인 미체결 수량 - 중복 매도 방지용)
+
+avg_buy_price: numeric (평단가)
+
+제약 조건: UNIQUE(account_id, stock_code) (한 계좌 내 종목 중복 방지)
+
+## On-Premise (PostgreSQL)
+
+D. local_transactions (상세 매매 로그)
+id: bigint (PK)
+
+order_id: text (어떤 주문에 의한 체결인지 기록)
+
+user_id: uuid
+
+stock_code: text
+
+side: text (BUY / SELL)
+
+price: numeric (체결가)
+
+quantity: integer (체결 수량)
+
+executed_at: timestamp
