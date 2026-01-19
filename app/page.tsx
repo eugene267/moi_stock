@@ -1,3 +1,5 @@
+//branch test
+
 "use client";
 
 import axios from "axios";
@@ -76,7 +78,7 @@ export default function Home() {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          `/api/stock?code=${selectedStockCode}`
+          `/api/stock?code=${selectedStockCode}`,
         );
         const data = response.data;
 
