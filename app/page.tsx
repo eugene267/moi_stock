@@ -1,5 +1,3 @@
-//branch test 다시
-
 "use client";
 
 import axios from "axios";
@@ -18,6 +16,7 @@ import {
 } from "lightweight-charts";
 import styles from "./page.module.css";
 import StockButton from "@/components/StockButton";
+import AiButton from "@/components/AiButton";
 
 const stockMap: { [key: string]: string } = {
   "005930": "삼성전자",
@@ -132,6 +131,8 @@ export default function Home() {
       >
         {stockButtons} {/* useMemo 필요한지 확인하기 */}
       </div>
+
+      <AiButton></AiButton>
 
       <div ref={chartContainerRef} className={styles.chartWrapper} />
     </div>
