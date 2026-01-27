@@ -149,6 +149,7 @@ const AiButton = memo(() => {
         fontSize: "30px",
         cursor: "pointer",
         zIndex: 1000,
+        userSelect: "none",
       }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
