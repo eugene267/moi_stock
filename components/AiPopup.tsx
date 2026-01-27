@@ -79,7 +79,6 @@ const AiPopup = memo(({ isOpen, isLeft }: AiPopupProps) => {
         <input
           className={styles.inputField}
           type="text"
-          placeholder="메세지를 입력하세요..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => {
