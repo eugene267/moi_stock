@@ -1,0 +1,53 @@
+.header {
+  height: 64px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.authContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.balanceInfo {
+  background: #2d2d2d;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.amount {
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.loginBtn, .logoutBtn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.loginBtn { background-color: #fff; color: #000; }
+.logoutBtn { background-color: #333; color: #eee; }

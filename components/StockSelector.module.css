@@ -1,0 +1,13 @@
+/* 버튼들을 감싸는 영역 */
+.buttonGroup {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px; /* 버튼 사이 간격 */
+}
+
+
+.loadingButtonGroup {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(1); 
+}

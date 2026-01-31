@@ -1,7 +1,7 @@
 "use client";
 
 import React, { memo } from "react";
-import styles from "../app/page.module.css";
+import styles from "./StockButton.module.css";
 
 interface StockButtonProps {
   code: string;
@@ -24,7 +24,7 @@ const StockButton = memo(
         {name}
       </button>
     );
-  }
+  },
 );
 
 StockButton.displayName = "StockButton";
