@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./AiPopup.module.css";
 
 interface AiPopupProps {
@@ -33,7 +33,7 @@ const AiPopup = memo(({ isOpen, isLeft }: AiPopupProps) => {
       const response = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: inputText }),
+        body: JSON.stringify({ message: inputText, history: messages }),
       });
 
       const data = await response.json();

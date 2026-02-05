@@ -28,7 +28,6 @@ const AiButton = memo(() => {
   }, []);
 
   useEffect(() => {
-    // 1. 위치를 업데이트하는 함수 분리
     const updatePosition = () => {
       setPosition((prev) => {
         if (isLeft) {
@@ -135,10 +134,11 @@ const AiButton = memo(() => {
       style={{
         backgroundColor: "#007bff",
         position: "fixed",
-        transform: `translate(${position.x}px, ${position.y}px) translate(-50%, -50%)`,
-        transition: isReturning ? "transform 0.2s ease-in-out" : "none",
-        top: 0,
-        left: 0,
+        left: `${position.x - width / 2}px`,
+        top: `${position.y - height / 2}px`,
+        transition: isReturning
+          ? "left 0.2s ease-in-out, top 0.2s ease-in-out"
+          : "none",
         width: `${width}px`,
         height: `${height}px`,
         borderRadius: "50%",

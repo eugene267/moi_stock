@@ -1,0 +1,34 @@
+.authContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.balanceInfo {
+  background: #2d2d2d;
+  padding: 4px 12px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.amount {
+  color: #4caf50;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.loginBtn, .logoutBtn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.loginBtn { background-color: #fff; color: #000; }
+.logoutBtn { background-color: #333; color: #eee; }

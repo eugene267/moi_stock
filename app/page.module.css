@@ -7,3 +7,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.mainContainer ::-webkit-scrollbar {
+  display: none;
+}
