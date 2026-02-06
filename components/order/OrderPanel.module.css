@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+   flex: 0 0 270px; 
+  background-color: #161a23;
+  border-radius: 12px;
+  padding: 30px;
+  color: white;
+  border: 1px solid #2d313e;
+  min-height: 600px;
+}
+
+.blurContent {
+  filter: blur(8px); 
+  pointer-events: none; 
+  user-select: none;    
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;        
+}
+
+.tabGroup {
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #252a37;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.activeBuy {
+  background-color: #ef4444; 
+  color: white;
+}
+
+.activeSell {
+  background-color: #3b82f6; 
+  color: white;
+}
+.infoRow, .totalRow {
+    margin: 0px 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.balanceText {
+  color: #10b981;
+}
+
+.currentPriceText {
+  color: #f3f4f6; 
+  font-weight: 600;
+}
+
+.inputGroup {
+    margin: 100px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background-color: #374151;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.quantityInput {
+  flex: 1;
+  background: #252a37;
+  border: none;
+  padding: 12px;
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+  outline: none;
+}
+
+.quantityInput::-webkit-outer-spin-button,
+.quantityInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.stepBtn {
+  width: 40px;
+  height: 48px; 
+  background-color: #374151;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.bottomSection {
+  margin-top: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.totalPrice {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f3f4f6;
+}
+
+.buyBtn, .sellBtn {
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.buyBtn { background-color: #ef4444; color: white; }
+.sellBtn { background-color: #3b82f6; color: white; }

@@ -1,14 +1,30 @@
 "use client";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import styles from "./UserInfo.module.css";
+import { createClient } from "@/utils/supabase/client";
 
 interface UserInfoProps {
   user: any;
-  handleLogin: () => Promise<void>;
-  handleLogout: () => Promise<void>;
 }
 
-const UserInfo = memo(({ user, handleLogin, handleLogout }: UserInfoProps) => {
+const supabase = createClient();
+
+const UserInfo = memo(({ user }: UserInfoProps) => {
+  // 구글 로그인 함수
+  const handleLogin = useCallback(async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+  }, []);
+
+  // 로그아웃 함수
+  const handleLogout = useCallback(async () => {
+    await supabase.auth.signOut();
+  }, []);
+
   return (
     <div className={styles.authContainer}>
       {user ? (

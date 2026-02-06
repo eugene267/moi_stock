@@ -1,10 +1,13 @@
 "use client";
 
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
 import styles from "./Header.module.css";
 import UserInfo from "./UserInfo";
+import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
+const supabase = createClient();
 const Header = memo(() => {
   const [user, setUser] = useState<any>(null);
 
@@ -21,37 +24,22 @@ const Header = memo(() => {
     // 2. 로그인/로그아웃 상태 실시간 감지
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
+    } = supabase.auth.onAuthStateChange(
+      (event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user ?? null);
+      },
+    );
 
     return () => subscription.unsubscribe();
   }, []);
 
-  // 구글 로그인 함수
-  const handleLogin = useCallback(async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  }, []);
-
-  // 로그아웃 함수
-  const handleLogout = useCallback(async () => {
-    await supabase.auth.signOut();
-  }, []);
-
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>📈 Incoding Stock</div>
+      <Link href="/" className={styles.logo}>
+        📈 Incoding Stock
+      </Link>
 
-      <UserInfo
-        user={user}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-      />
+      <UserInfo user={user} />
     </header>
   );
 });

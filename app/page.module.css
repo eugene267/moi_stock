@@ -1,13 +1,39 @@
+/* 전체 배경 및 높이 설정 */
 .mainContainer {
-  padding: 20px;
   background-color: #0b0e14;
   min-height: 100vh;
+  padding: 20px;
+  display: flex; 
+  justify-content: center;
+}
+
+/* 3단 레이아웃을 잡는 Flex 부모 */
+.layout {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 1800px; /* 너무 넓어지지 않게 최대치 제한 */
+  align-items: flex-start; /* 자식들이 각자 내용만큼만 높이를 갖도록 */
+}
+
+
+/* 중앙 차트 영역 (유연하게 조절됨) */
+.chartContainer {
+  flex: 1; /* 남은 모든 공간을 차지함 */
+  padding: 20px;
+  background-color: #0b0e14;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 500px; /* 차트가 너무 찌그러지지 않게 최소 너비 설정 */
 }
 
-.mainContainer ::-webkit-scrollbar {
-  display: none;
+/* 타이틀 스타일 */
+.layout h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #2d313e;
+  padding-bottom: 12px;
 }

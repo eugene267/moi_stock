@@ -97,8 +97,6 @@ user_id: uuid (FK -> users.id)
 
 balance: numeric (현재 주문 가능 현금)
 
-pending_balance: numeric (추가: 매수 주문 중인 미체결 금액 - 잔고 꼬임 방지용)
-
 total_evaluation: numeric (총 자산 평가액)
 
 updated_at: timestamp
@@ -113,8 +111,6 @@ stock_code: text (종목코드)
 stock_name: text (종목명)
 
 quantity: integer (보유 수량)
-
-pending_quantity: integer (추가: 매도 주문 중인 미체결 수량 - 중복 매도 방지용)
 
 avg_buy_price: numeric (평단가)
 

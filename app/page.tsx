@@ -7,6 +7,7 @@ import AiButton from "@/components/AiButton";
 import StockChart from "@/components/StockChart";
 import Title from "@/components/Title";
 import StockSelector from "@/components/StockSelector";
+import OrderPanel from "@/components/order/OrderPanel";
 
 export default function Home() {
   const [selectedStockCode, setSelectedStockCode] = useState<string>("005930");
@@ -42,24 +43,34 @@ export default function Home() {
 
   return (
     <div className={styles.mainContainer}>
-      <Title
-        selectedStockCode={selectedStockCode}
-        isLoading={isLoading}
-      ></Title>
+      <div className={styles.layout}>
+        <div>
+          <h1>주식 보유량</h1>
+        </div>
 
-      <StockSelector
-        selectedStockCode={selectedStockCode}
-        isLoading={isLoading}
-        onSelect={handleSelectStock}
-      ></StockSelector>
+        <div className={styles.chartContainer}>
+          <Title
+            selectedStockCode={selectedStockCode}
+            isLoading={isLoading}
+          ></Title>
 
-      <StockChart
-        selectedStockCode={selectedStockCode}
-        isLoading={isLoading}
-        stockData={stockData}
-      ></StockChart>
+          <StockSelector
+            selectedStockCode={selectedStockCode}
+            isLoading={isLoading}
+            onSelect={handleSelectStock}
+          ></StockSelector>
 
-      <AiButton></AiButton>
+          <StockChart
+            selectedStockCode={selectedStockCode}
+            isLoading={isLoading}
+            stockData={stockData}
+          ></StockChart>
+
+          <AiButton></AiButton>
+        </div>
+
+        <OrderPanel selectedStockCode={selectedStockCode}></OrderPanel>
+      </div>
     </div>
   );
 }
