@@ -2,12 +2,11 @@
 
 import React, { memo, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { createClient } from "@/utils/supabase/client";
+import { supabase } from "@/utils/supabase/client";
 import styles from "./Header.module.css";
 import UserInfo from "./UserInfo";
 import { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
-const supabase = createClient();
 const Header = memo(() => {
   const [user, setUser] = useState<any>(null);
 

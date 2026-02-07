@@ -2,14 +2,12 @@
 
 import { use, useEffect, useState } from "react";
 import styles from "./OrderPanel.module.css";
-import { createClient } from "@/utils/supabase/client";
+import { supabase } from "@/utils/supabase/client";
 import { AuthChangeEvent, Session, User } from "@supabase/supabase-js";
 
 interface OrderPanelProps {
   selectedStockCode: string;
 }
-
-const supabase = createClient();
 
 export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
   const [user, setUser] = useState<User | any>(null);
@@ -21,6 +19,14 @@ export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
   const totalOrderPrice = quantity * currentPrice;
 
   useEffect(() => {
+    const getSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+    };
+    getSession();
+
     const fetchBalance = async (userId: string) => {
       const { data } = await supabase
         .from("accounts")

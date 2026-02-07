@@ -1,13 +1,12 @@
 "use client";
 import { memo, useCallback } from "react";
 import styles from "./UserInfo.module.css";
-import { createClient } from "@/utils/supabase/client";
+
+import { supabase } from "@/utils/supabase/client";
 
 interface UserInfoProps {
   user: any;
 }
-
-const supabase = createClient();
 
 const UserInfo = memo(({ user }: UserInfoProps) => {
   // 구글 로그인 함수
@@ -18,12 +17,18 @@ const UserInfo = memo(({ user }: UserInfoProps) => {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     });
-  }, []);
+  }, [supabase]);
 
   // 로그아웃 함수
   const handleLogout = useCallback(async () => {
-    await supabase.auth.signOut();
-  }, []);
+    try {
+      console.log("Logging out user:", user);
+      supabase.auth.signOut();
+      console.log("Logout successful");
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  }, [supabase, user]);
 
   return (
     <div className={styles.authContainer}>
