@@ -21,8 +21,6 @@ export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
   const totalOrderPrice = quantity * currentPrice;
 
   useEffect(() => {
-    let isMounted = true;
-
     const fetchBalance = async (userId: string) => {
       const { data } = await supabase
         .from("accounts")
@@ -30,7 +28,7 @@ export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
         .eq("user_id", userId)
         .maybeSingle();
 
-      if (isMounted && data) {
+      if (data) {
         setBalance(data.balance);
       }
     };
@@ -45,16 +43,13 @@ export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
           await fetchBalance(currentUser.id);
           setUser(currentUser);
         } else {
-          if (isMounted) {
-            setBalance(0);
-            setUser(null);
-          }
+          setBalance(0);
+          setUser(null);
         }
       },
     );
 
     return () => {
-      isMounted = false;
       subscription.unsubscribe();
     };
   }, [supabase]);
