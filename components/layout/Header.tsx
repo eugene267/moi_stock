@@ -30,6 +30,8 @@ const Header = memo(() => {
       },
     );
 
+    console.log(user);
+
     return () => subscription.unsubscribe();
   }, []);
 
