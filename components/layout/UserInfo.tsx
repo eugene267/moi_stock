@@ -1,7 +1,6 @@
 "use client";
-import { memo, useCallback } from "react";
+import { memo, use, useCallback } from "react";
 import styles from "./UserInfo.module.css";
-
 import { supabase } from "@/utils/supabase/client";
 
 interface UserInfoProps {
@@ -23,7 +22,7 @@ const UserInfo = memo(({ user }: UserInfoProps) => {
   const handleLogout = useCallback(async () => {
     try {
       console.log("Logging out user:", user);
-      supabase.auth.signOut();
+      await supabase.auth.signOut({ scope: "local" });
       console.log("Logout successful");
     } catch (error) {
       console.error("Error during logout:", error);

@@ -19,14 +19,6 @@ export default function OrderPanel({ selectedStockCode }: OrderPanelProps) {
   const totalOrderPrice = quantity * currentPrice;
 
   useEffect(() => {
-    const getSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-    };
-    getSession();
-
     const fetchBalance = async (userId: string) => {
       const { data } = await supabase
         .from("accounts")
