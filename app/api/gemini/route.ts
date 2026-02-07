@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-import AiButton from "@/components/AiButton";
+import AiButton from "@/components/AiHelp/AiButton";
 
 interface Message {
   role: "user" | "model";

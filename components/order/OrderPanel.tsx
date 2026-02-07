@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import styles from "./OrderPanel.module.css";
 import { createClient } from "@/utils/supabase/client";
 import { AuthChangeEvent, Session, User } from "@supabase/supabase-js";

@@ -3,10 +3,10 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./page.module.css";
-import AiButton from "@/components/AiButton";
-import StockChart from "@/components/StockChart";
-import Title from "@/components/Title";
-import StockSelector from "@/components/StockSelector";
+import AiButton from "@/components/AiHelp/AiButton";
+import StockChart from "@/components/stockchart/StockChart";
+import Title from "@/components/stockchart/Title";
+import StockSelector from "@/components/stockchart/StockSelector";
 import OrderPanel from "@/components/order/OrderPanel";
 
 export default function Home() {
